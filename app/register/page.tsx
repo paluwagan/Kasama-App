@@ -115,6 +115,13 @@ iyong pangalan sa Organizer Dashboard Terminal.
       <div className="w-full max-w-md bg-[#F0FDF4] border-2 border-emerald-600/30 shadow-xl rounded-2xl p-8 space-y-6">
         {/* App Title Header Branding */}
         <div className="text-center mb-6">
+          <div className="flex justify-center mb-2">
+            <img 
+              src="/logo.png" 
+              alt="KasamaApp Logo" 
+              className="w-16 h-16 object-contain drop-shadow-md"
+              />
+            </div>
           <h1 className="text-3xl font-black text-[#246927] tracking-tight">KasamaApp</h1>
           <p className="text-gray-500 text-xs mt-1 font-medium">Digital Paluwagan Registration Portal</p>
         </div>

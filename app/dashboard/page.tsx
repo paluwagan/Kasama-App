@@ -107,10 +107,17 @@ export default function OrganizerDashboard() {
       <div className="w-full max-w-5xl mx-auto bg-[#F0FDF4] border-2 border-emerald-600/30 shadow-xl rounded-2xl p-8 space-y-6">
         
         <div className="flex justify-between items-center border-b pb-4 mb-6">
+          <div className="flex items-center gap-3">
+            <img 
+              src="/logo.png" 
+              alt="KasamaApp Logo" 
+              className="w-12 h-12 object-contain drop-shadow-sm"
+            />
           <div>
             <h1 className="text-2xl font-bold text-[#246927] tracking-tight">KasamaApp: Circle Organizer Terminal</h1>
-            <p className="text-gray-500 text-[11px] font-meduim mt-0.5 uppercase tracking-wider">Live Classroom Validation Management Ledger Layer</p>
+            <p className="text-gray-500 text-[11px] font-medium mt-0.5 uppercase tracking-wider">Automated Paluwagan Ledger Sheet</p>
           </div>
+        </div>
           <div className="flex items-center space-x-2">
             <span className="bg-[#2A6F4E]/10 text-[#163A17] font-semibold text-xs px-3 py-1.5 rounded-full border border-[#2A6F4E]/30 whitespace-nowrap">
             Active Rotation Loop

@@ -9,6 +9,13 @@ export default function Home() {
         
         {/* Logo Branding */}
         <div>
+          <div className="flex justify-center mb-3">
+            <img 
+              src="/logo.png" 
+              alt="KasamaApp Logo" 
+              className="w-20 h-20 object-contain drop-shadow-md"
+            />
+          </div>
           <h1 className="text-4xl font-black text-[#246927] tracking-tight">KasamaApp</h1>
           <p className="text-gray-500 text-xs mt-1 uppercase tracking-wider font-semibold">
             Automated Digital Paluwagan Ledger System
