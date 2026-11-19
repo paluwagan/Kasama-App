@@ -20,6 +20,8 @@ export default function OrganizerDashboard() {
   const [profiles, setProfiles] = useState<Profile[]>([]);
   const [loading, setLoading] = useState(true);
   const [successMessage, setSuccessMessage] = useState('');
+  const [isUnlocked, setIsUnlocked] = useState(false);
+  const [pinInput, setPinInput] = useState('');
 
   // 2. Huhugutin ang listahan ng mga kaklaseng nagrehistro mula sa inyong cloud Supabase tables
   const fetchProfiles = async () => {
@@ -101,7 +103,37 @@ export default function OrganizerDashboard() {
     }
   }; 
 
-
+  if (!isUnlocked) {
+  return (
+    <div className="min-h-screen bg-[#DCFCE7] flex items-center justify-center p-4">
+      <div className="bg-white p-8 rounded-2xl shadow-lg max-w-sm w-full text-center border border-emerald-100">
+        <img src="/logo.png" alt="KasamaApp Logo" className="w-16 h-16 mx-auto mb-3 object-contain" />
+        <h2 className="text-xl font-black text-[#1B491C]">Organizer Security Lock</h2>
+        <p className="text-xs text-gray-500 mt-1 mb-4">Enter 4-digit Circle Organizer PIN to manage ledger</p>
+        <input
+          type="password"
+          maxLength={4}
+          value={pinInput}
+          onChange={(e) => setPinInput(e.target.value)}
+          placeholder="••••"
+          className="w-full text-center text-2xl tracking-[0.5em] py-2 border border-gray-300 rounded-xl mb-3 focus:outline-none focus:border-emerald-600"
+        />
+        <button
+          onClick={() => {
+            if (pinInput === '2026') {
+              setIsUnlocked(true);
+            } else {
+              alert('Incorrect Organizer PIN');
+            }
+          }}
+          className="w-full py-2.5 bg-[#1B491C] hover:bg-emerald-800 text-white font-bold rounded-xl transition"
+        >
+          Unlock Terminal
+        </button>
+      </div>
+    </div>
+  );
+}
   return (
     <div className="min-h-screen bg-gray-100 p-6">
       <div className="w-full max-w-5xl mx-auto bg-[#F0FDF4] border-2 border-emerald-600/30 shadow-xl rounded-2xl p-8 space-y-6">
