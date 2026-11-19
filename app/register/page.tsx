@@ -15,7 +15,8 @@ export default function RegisterPage() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [message, setMessage] = useState('');
   const [simulatedInsurance, setSimulatedInsurance] = useState(false);
-  
+  const [idPreview, setIdPreview] = useState<string | null>(null);
+
   const router = useRouter();
   const studentIdRef = useRef<HTMLInputElement>(null);
   // Awtomatikong ginagawang malaking titik ang unahan ng bawat salita
@@ -87,7 +88,7 @@ iyong pangalan sa Organizer Dashboard Terminal.
       const url = window.URL.createObjectURL(blob);
       const a = document.createElement('a');
       a.href = url;
-      a.download = "KasamaApp_Receipt_${cleanedId}.txt";
+      a.download = 'KasamaApp_Receipt_' + fullName.trim().replace(/\s+/g, '_') + '.txt';
       document.body.appendChild(a);
       a.click();
       window.URL.revokeObjectURL(url);
@@ -97,6 +98,7 @@ iyong pangalan sa Organizer Dashboard Terminal.
       // I-clear ang fields pagkatapos ng successful validation tracking loop
       setFullName('');
       setStudentId('');
+      setIdPreview(null);
 
       setSimulatedInsurance(false);
 
@@ -169,17 +171,35 @@ iyong pangalan sa Organizer Dashboard Terminal.
             />
           </div>
 
-          {/* Mock ID Upload Section */}
+          {/* Interactive ID Upload Section */}
           <div>
-            <label className="block text-sm font-medium text-gray-700">Upload Student ID Photo</label>
-            <div className="mt-1 flex justify-center px-6 pt-5 pb-6 border-2 border-gray-300 border-dashed rounded-md bg-gray-50">
-              <div className="space-y-1 text-center">
-                <p className="text-xs text-gray-500">Mock File Upload Area Enabled</p>
-                <span className="inline-block text-[11px] bg-[#246927] text-white px-2.5 py-0.5 rounded-full font-bold tracking-wide shadow-sm">
-                  Tiwala Check Secured
-                </span>
-              </div>
-            </div>
+            <label className="block text-sm font-medium text-gray-700 mb-1">Upload Student ID Photo</label>
+            <label className="block border-2 border-dashed border-emerald-600/40 bg-emerald-50/50 rounded-xl p-4 text-center cursor-pointer hover:bg-emerald-100/50 transition">
+              <input
+                type="file"
+                accept="image/*"
+                className="hidden"
+                onChange={(e) => {
+                  const file = e.target.files?.item(0)
+                  if (file) {
+                    setIdPreview(URL.createObjectURL(file));
+                  }
+                }}
+              />
+              {idPreview ? (
+                <div className="flex flex-col items-center gap-2">
+                  <img src={idPreview} alt="ID Preview" className="h-24 object-contain rounded-lg border border-emerald-600/30 shadow-sm" />
+                  <span className="text-xs font-bold text-emerald-800">✓ ID Photo Attached (Click to change)</span>
+                </div>
+              ) : (
+                <div className="space-y-1">
+                  <p className="text-sm font-semibold text-gray-700">📸 Tap to Upload Student ID Photo</p>
+                  <span className="inline-block px-3 py-1 bg-[#1B491C] text-white text-[11px] font-bold rounded-full">
+                    Tiwala Check Secured
+                  </span>
+                </div>
+              )}
+            </label>
           </div>
 
           {/* Value-added Toggle Hook for the Damayan Microinsurance */}
