@@ -25,6 +25,9 @@ export default function Home() {
         <div className="text-sm text-gray-500 bg-gray-50 p-4 rounded-xl border border-gray-100 text-left">
           <p className="font-bold text-[#246927] mb-1">🔒 Secure Peer-to-Peer Gateway:</p>
           Maligayang pagdating sa KasamaApp Safe Network Portal. Mangyaring piliin ang kaukulang dashboard access point.
+          <p className="mt-2 pt-2 border-t border-gray-200 text-[11px] font-semibold text-emerald-800">
+          🛡️ Zero-Custody Notice: KasamaApp is an automated ledger only and does not hold or collect user funds.
+          </p>
       </div>
         {/* Navigation Layer Triggers */}
         <div className="space-y-3 pt-2">

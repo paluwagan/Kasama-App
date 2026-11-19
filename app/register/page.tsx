@@ -205,6 +205,9 @@ iyong pangalan sa Organizer Dashboard Terminal.
             {isSubmitting ? 'Processing Ledger Sync...' : 'Verify Profile & Unlock Groups (₱20.00)'}
           </button>
         </form>
+        <p className="text-center text-[11px] text-gray-500 mt-4">
+          🛡️ <span className="font-semibold text-emerald-800">Zero-Custody Ledger:</span> Cash contributions remain strictly between members and your Circle Organizer.
+        </p>
       </div>
     </div>
   );
