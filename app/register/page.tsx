@@ -16,6 +16,7 @@ export default function RegisterPage() {
   const [message, setMessage] = useState('');
   const [simulatedInsurance, setSimulatedInsurance] = useState(false);
   const [idPreview, setIdPreview] = useState<string | null>(null);
+  const [receiptText, setReceiptText] = useState<string | null>(null);
 
   const router = useRouter();
   const studentIdRef = useRef<HTMLInputElement>(null);
@@ -82,6 +83,7 @@ Pagkatapos magrehistro, awtomatikong lalabas ang
 iyong pangalan sa Organizer Dashboard Terminal.
 ==================================================
       `.trim();
+      setReceiptText(receiptContent);
 
       // === 2. I-TRIGGER ANG AUTOMATIC FILE DOWNLOADER NG BROWSER ===
       const blob = new Blob([receiptContent], { type: 'text/plain' });
@@ -225,6 +227,24 @@ iyong pangalan sa Organizer Dashboard Terminal.
             {isSubmitting ? 'Processing Ledger Sync...' : 'Verify Profile & Unlock Groups (₱20.00)'}
           </button>
         </form>
+          {receiptText && (
+            <div className="mt-5 p-4 bg-emerald-50 border border-emerald-300 rounded-xl shadow-sm">
+              <div className="flex items-center justify-between mb-2">
+                <span className="text-xs font-black text-[#1B491C] uppercase tracking-wider">
+                  ✓ Official Digital Receipt
+                </span>
+                <span className="text-[10px] bg-emerald-700 text-white px-2 py-0.5 rounded-full font-bold">
+                  Cloud Synced
+                </span>
+              </div>
+              <pre className="text-[11px] font-mono text-gray-800 whitespace-pre-wrap bg-white p-3 rounded-lg border border-emerald-100 overflow-x-auto">
+                {receiptText}
+              </pre>
+              <p className="text-[10px] text-gray-500 mt-2 text-center">
+                Screenshot this receipt as proof of your verified registration.
+              </p>
+            </div>
+          )}
         <p className="text-center text-[11px] text-gray-500 mt-4">
           🛡️ <span className="font-semibold text-emerald-800">Zero-Custody Ledger:</span> Cash contributions remain strictly between members and your Circle Organizer.
         </p>
